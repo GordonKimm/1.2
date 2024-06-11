@@ -16,9 +16,9 @@ def get_all_information ():
     Movies = cursor.fetchall()
    
  #no clue what what this does i found this on a cheat sheet on google classroom
-    print(f"{'MOVIE NAME':<20}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST(MILLIONS)':<20}{'EARNED':<10}{'RELEASE DATE':<12}")
+    print(f"{'MOVIE NAME':<20}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
     for movie in Movies:
-        print(f"{movie[1]:<20}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<10}{movie[7]:<12}")
+        print(f"{movie[1]:<20}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
 
 def view_all_mystery_movies():
     
