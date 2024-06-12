@@ -4,7 +4,20 @@ conn = sqlite3.connect('1.2.db')
 
 cursor = conn.cursor()
 
-
+print("""
+     ______  _______           _____     ____      ____  ____      ______              ______  _______        ______  _____   ______    ____   ____ 
+    |      \/       \     ____|\    \   |    |    |    ||    | ___|\     \            |      \/       \   ___|\     \|\    \ |\     \  |    | |    |
+   /          /\     \   /     /\    \  |    |    |    ||    ||     \     \          /          /\     \ |     \     \\\    \| \     \ |    | |    |
+  /     /\   / /\     | /     /  \    \ |    |    |    ||    ||     ,_____/|        /     /\   / /\     ||     ,_____/|\|    \  \     ||    | |    |
+ /     /\ \_/ / /    /||     |    |    ||    |    |    ||    ||     \--'\_|/       /     /\ \_/ / /    /||     \--'\_|/ |     \  |    ||    | |    |
+|     |  \|_|/ /    / ||     |    |    ||    |    |    ||    ||     /___/|        |     |  \|_|/ /    / ||     /___/|   |      \ |    ||    | |    |
+|     |       |    |  ||\     \  /    /||\    \  /    /||    ||     \____|\       |     |       |    |  ||     \____|\  |    |\ \|    ||    | |    |
+|\____\       |____|  /| \_____\/____/ || \ ___\/___ / ||____||____ '     /|      |\____\       |____|  /|____ '     /| |____||\_____/||\___\_|____|
+| |    |      |    | /  \ |    ||    | / \ |   ||   | / |    ||    /_____/ |      | |    |      |    | / |    /_____/ | |    |/ \|   ||| |    |    |
+ \|____|      |____|/    \|____||____|/   \|___||___|/  |____||____|     | /       \|____|      |____|/  |____|     | / |____|   |___|/ \|____|____|
+    \(          )/          \(    )/        \(    )/      \(    \( |_____|/           \(          )/       \( |_____|/    \(       )/      \(   )/  
+     '          '            '    '          '    '        '     '    )/               '          '         '    )/        '       '        '   '   
+                                                                      '                                          '   """)
 # this line makes a function
 def get_all_information ():
    
@@ -23,26 +36,27 @@ def get_all_information ():
 def view_all_mystery_movies():
     
     #this line assigns a SQL query string to the variable query
-    query = "SELECT name FROM Movies WHERE genre = 'mystery'"
+    query = "SELECT * FROM Movies WHERE genre = 'mystery'"
     cursor.execute(query)
    #This line retrieves all the rows returned by the SQL query adn stores it in the variable mystery_movies
     mystery_movies = cursor.fetchall()
-    
+    print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
     for movie in mystery_movies:
-
-        print(movie[0])
+        print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
 
 
 
 def view_all_horror_movies():
-    query = "SELECT name FROM Movies WHERE genre = 'horror'"
+    query = "SELECT * FROM Movies WHERE genre = 'horror'"
     #execute the SQL query using the cursor
     cursor.execute(query)
     # Fetch all the results returned by the SQL query
     horror_movies = cursor.fetchall()
-    # repeats or iterates over each movie in the fetched horror movies list
+    # Print the header row with column names, and i customised the width and position of the text to make it more neat
     print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
+    # loops over each movie in the horror_movies list
     for movie in horror_movies:
+    # Print details of each movie 
         print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
 
 def view_all_action_movies ():
@@ -55,7 +69,7 @@ def view_all_action_movies ():
     
 
 def view_all_adventure_movies ():
-    query = "SELECT name FROM Movies WHERE genre = 'adventure'"
+    query = "SELECT * FROM Movies WHERE genre = 'adventure'"
     cursor.execute(query)
     adventure_movies = cursor.fetchall()
     print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
@@ -64,7 +78,7 @@ def view_all_adventure_movies ():
 
 
 def view_all_comedy_movies():
-    query = "SELECT name FROM Movies WHERE genre = 'comedy'"
+    query = "SELECT * FROM Movies WHERE genre = 'comedy'"
     cursor.execute(query)
     comedy_movies = cursor.fetchall()
     print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
