@@ -67,24 +67,14 @@ def view_all_comedy_movies():
     for movie in comedy_movies:
         print(movie[0])
 
-def search_movie_by_name():    
-    movie_name = input("What movie would you like to search for: ")  
-    query = "SELECT * FROM Movies WHERE name = [movie_name]"
-    if movie_name:
-        print (f"{'MOVIE NAME':<20}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
-    for movie in search_movie :
-        print(f"{movie[1]:<20}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
-    else :
-        print("this is not a vaild answer: ")
-    cursor.execute(query)
-    search_movie = cursor.fetchall()
+    
 
 
 
 
 
 while True:
-    choice = input("\n1. Get all information\n2. Every mystery movie\n3. Every horror movie\n4. Every action movie\n5. Every adventure movie\n6. Every comedy movie\n7. EXIT\n< ")
+    choice = input("\n1. Get all information\n2. Every mystery movie\n3. Every horror movie\n4. Every action movie\n5. Every adventure movie\n6. Every comedy movie\n7. EXIT\n>    ")
     if choice == '1':
         get_all_information()
     elif choice == '2':
@@ -98,7 +88,7 @@ while True:
     elif choice == '6':
         view_all_comedy_movies()
     elif choice == '7':
-        print("Thank you for using my program👍")
+        print("Thank you for using my program 🥳")
         break
     else:
         print("Invalid Choice")
