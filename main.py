@@ -46,11 +46,13 @@ def view_all_horror_movies():
         print(movie[0])
 
 def view_all_action_movies ():
-    query = "SELECT name FROM Movies WHERE genre = 'action'"
+    query = "SELECT * FROM Movies WHERE genre = 'action'"
     cursor.execute(query)
     action_movies = cursor.fetchall()
+    print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
     for movie in action_movies:
-        print(movie[0])
+        print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
+    
 
 def view_all_adventure_movies ():
     query = "SELECT name FROM Movies WHERE genre = 'adventure'"
