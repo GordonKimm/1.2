@@ -19,19 +19,17 @@ print("""
      '          '            '    '          '    '        '     '    )/               '          '         '    )/        '       '        '   '   
                                                                       '                                          '   """)
 # this line makes a function
-def get_all_information ():
-   
-   
-   # this line
+def get_all_information (): 
+   # this line executes the SQL query
     cursor.execute('SELECT * FROM Movies;')
-
 #this line fetches the information from the sql database
     Movies = cursor.fetchall()
-   
  #no clue what what this does i found this on a cheat sheet on google classroom
-    print(f"{'MOVIE NAME':<20}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
+    print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
+    # repeats over each movie record in the list of movies
     for movie in Movies:
-        print(f"{movie[1]:<20}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
+        #samething found on classroom
+        print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
 
 def view_all_mystery_movies():
     
@@ -85,6 +83,19 @@ def view_all_comedy_movies():
     for movie in comedy_movies:
         print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
 
+def search_movie_by_name():
+    movie_name = input("Enter the movie you want to search: ")
+    query = "SELECT * FROM Movies WHERE name = ?"
+    cursor.execute(query,(movie_name,)) 
+    search_movie = cursor.fetchall()
+    if search_movie:
+        print(f"{'MOVIE NAME':<24}{'RATING':<10}{'MINUTES':<10}{'GENRE':<14}{'COST$(MILLIONS)':<20}{'EARNED$(MILLIONS)':<20}{'RELEASE DATE':<15}")
+        for movie in search_movie:
+                print(f"{movie[1]:<24}{movie[2]:<10}{movie[3]:<10}{movie[4]:<14}{movie[5]:<20}{movie[6]:<20}{movie[7]:<15}")
+    else :
+        print("please try again that was not a vaild input")
+
+
     
 
 
@@ -106,7 +117,6 @@ while True:
     elif choice == '6':
         view_all_comedy_movies()
     elif choice == '7':
-        print("Thank you for using my program 🥳")
-        break
+        search_movie_by_name()
     else:
         print("Invalid Choice")
